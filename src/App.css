@@ -1,0 +1,213 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #1d021b;
+}
+
+.table-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #be070753;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+
+.table-container h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  text-align: left;
+  padding: 14px 18px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+
+th:first-child {
+  border-top-left-radius: 8px;
+}
+
+th:last-child {
+  border-top-right-radius: 8px;
+}
+
+th:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+}
+
+td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+tbody tr:hover {
+  background-color: #e3f2fd;
+  transform: scale(1.01);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+/* Data cell styling */
+td div {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+
+td b {
+  color: #667eea;
+  font-weight: 600;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px solid #e8e8e8;
+}
+
+.pagination button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.pagination button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+.pagination button:disabled {
+  background: #d0d0d0;
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+.pagination span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  min-width: 120px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-container {
+    width: 95%;
+    padding: 16px;
+    margin: 20px auto;
+  }
+
+  .table-container h2 {
+    font-size: 1.4rem;
+    margin-bottom: 16px;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  th, td {
+    padding: 10px 12px;
+  }
+
+  .pagination {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .pagination button {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+
+  .pagination span {
+    font-size: 0.9rem;
+    min-width: 100px;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  .table-container {
+    background: #1e1e1e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .table-container h2 {
+    color: #e0e0e0;
+  }
+
+  table {
+    color: #e0e0e0;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #2a2a2a;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+  }
+
+  tbody tr:hover {
+    background-color: #3a3a3a;
+  }
+
+  td {
+    border-bottom: 1px solid #3a3a3a;
+  }
+
+  .pagination {
+    border-top: 2px solid #3a3a3a;
+  }
+
+  .pagination span {
+    color: #e0e0e0;
+  }
+}
