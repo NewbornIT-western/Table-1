@@ -34,8 +34,22 @@ function Table() {
     }),
 
     columnHelper.accessor("name", {
-      header: () => <span>Name</span>,
+      header: () => (
+        <span
+          style={{ cursor: "pointer" }}
+          onClick={() =>
+            table.setSorting((old) => {
+              if (!old.length) return [{ id: "name", desc: false }];
+              const isDesc = old[0].desc;
+              return [{ id: "name", desc: !isDesc }];
+            })
+          }
+        >
+          Name ⬍
+        </span>
+      ),
       cell: (info) => info.getValue(),
+      sortingFn: "alphanumeric", 
     }),
 
     columnHelper.accessor("data", {
