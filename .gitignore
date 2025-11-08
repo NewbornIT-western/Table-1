@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+testing/.next/
+
+
+testing/.env
+
+node_modules/
+testing/node_modules/
