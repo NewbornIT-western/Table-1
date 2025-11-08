@@ -8,9 +8,10 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import CallAPI from "./CallAPI";
+import CallAPIbyTQ from "./CallAPIbyTQ";
 
 function Table() {
-  const data = CallAPI();
+  const { data, isPending, isError, error, refetch } = CallAPIbyTQ();
 
   const columnHelper = createColumnHelper();
 
@@ -49,7 +50,7 @@ function Table() {
         </span>
       ),
       cell: (info) => info.getValue(),
-      sortingFn: "alphanumeric", 
+      sortingFn: "alphanumeric",
     }),
 
     columnHelper.accessor("data", {
@@ -80,6 +81,40 @@ function Table() {
       },
     },
   });
+
+  if (isPending) {
+    return (
+      <div className="table-container">
+        <h2>Tech Goods Data</h2>
+        <div
+          style={{
+            textAlign: "center",
+            padding: "60px",
+            fontSize: "1.2rem",
+            color: "#667eea",
+          }}
+        >
+          ⏳ Loading data...
+        </div>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="table-container">
+        <h2>Tech Goods Data</h2>
+        <div style={{ textAlign: "center", padding: "60px" }}>
+          <div style={{ fontSize: "1.2rem", color: "red" }}>
+            Error 
+          </div>
+          <div style={{ marginTop: "10px", fontSize: "0.9rem", color: "#666" }}>
+            {error?.message || "Something went wrong"}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="table-container">
@@ -120,7 +155,9 @@ function Table() {
         >
           ⬅ Prev
         </button>
-
+        <button onClick={() => refetch()}>
+          Refetch
+        </button>
         <button
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
