@@ -2,6 +2,12 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { unstable_cache } from 'next/cache'
 
+/**
+ * Fetches redirect documents from the Payload CMS 'redirects' collection.
+ *
+ * @param depth - Depth for retrieving nested related data when querying documents; defaults to 1
+ * @returns An array of redirect documents from the 'redirects' collection
+ */
 export async function getRedirects(depth = 1) {
   const payload = await getPayload({ config: configPromise })
 

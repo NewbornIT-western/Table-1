@@ -3,6 +3,12 @@ import { Button } from '@/components/ui/button'
 import { CopyIcon } from '@payloadcms/ui/icons/Copy'
 import { useState } from 'react'
 
+/**
+ * Renders a button that copies the provided code to the clipboard and briefly shows "Copied!".
+ *
+ * @param code - The string to copy to the clipboard when the button is clicked.
+ * @returns A React element for the copy button.
+ */
 export function CopyButton({ code }: { code: string }) {
   const [text, setText] = useState('Copy')
 

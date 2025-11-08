@@ -19,6 +19,16 @@ interface Props {
   scroll?: boolean
 }
 
+/**
+ * Enable a card element to behave like a clickable link, navigating on a quick click.
+ *
+ * When the user performs a quick click (mousedown then mouseup within ~250ms) on the card and a nested anchor ref has an `href`, this hook will trigger navigation either via the Next.js router or the browser.
+ *
+ * @param external - If `true`, open the link through the browser (window.open) instead of using the Next.js router.
+ * @param newTab - When `external` is `true`, open the link in a new tab if `true`, otherwise reuse the same tab.
+ * @param scroll - When using the Next.js router, control whether the navigation should scroll to the top (`true`) or preserve scroll (`false`).
+ * @returns An object containing two refs: `card.ref` — attach to the clickable container element, and `link.ref` — attach to the anchor element inside the card.
+ */
 function useClickableCard<T extends HTMLElement>({
   external = false,
   newTab = false,

@@ -3,6 +3,11 @@ import React from 'react'
 
 import { Button } from '@/components/ui/button'
 
+/**
+ * Renders a 404 Not Found page containing a large "404" heading, a descriptive message, and a button that navigates to the home page.
+ *
+ * @returns A JSX element representing the 404 Not Found page.
+ */
 export default function NotFound() {
   return (
     <div className="container py-28">

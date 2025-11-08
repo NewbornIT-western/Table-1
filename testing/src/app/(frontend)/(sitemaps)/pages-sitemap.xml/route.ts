@@ -61,6 +61,11 @@ const getPagesSitemap = unstable_cache(
   },
 )
 
+/**
+ * Generates the server-side sitemap and returns it as an HTTP response.
+ *
+ * @returns The HTTP response containing the sitemap XML to be served to the client.
+ */
 export async function GET() {
   const sitemap = await getPagesSitemap()
 

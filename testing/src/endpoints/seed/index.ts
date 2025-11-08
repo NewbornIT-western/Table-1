@@ -277,6 +277,13 @@ export const seed = async ({
   payload.logger.info('Seeded database successfully!')
 }
 
+/**
+ * Fetches a remote file by URL and returns a File object suitable for upload/creation.
+ *
+ * @param url - The remote file URL to fetch
+ * @returns A `File` object containing `name`, binary `data`, `mimetype` (inferred from the URL extension), and `size` in bytes
+ * @throws Error if the HTTP response status is not OK (non-2xx)
+ */
 async function fetchFileByURL(url: string): Promise<File> {
   const res = await fetch(url, {
     credentials: 'include',

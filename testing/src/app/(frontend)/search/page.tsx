@@ -13,6 +13,12 @@ type Args = {
     q: string
   }>
 }
+/**
+ * Server-side page component that performs a search against the Payload `search` collection and renders the search UI and results.
+ *
+ * @param searchParamsPromise - Promise resolving to an object containing an optional `q` string used as the search query
+ * @returns A React element containing the search interface and either the search results (rendered via CollectionArchive) or a "No results found." message
+ */
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
   const { q: query } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
@@ -81,6 +87,11 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
   )
 }
 
+/**
+ * Provide metadata for the Search page.
+ *
+ * @returns Metadata object with the page `title` set to "Payload Website Template Search".
+ */
 export function generateMetadata(): Metadata {
   return {
     title: `Payload Website Template Search`,

@@ -5,6 +5,13 @@ import { headers } from 'next/headers'
 
 export const maxDuration = 60 // This function can run for a maximum of 60 seconds
 
+/**
+ * Run the data seeding routine using the Payload CMS local API for an authenticated user.
+ *
+ * If the request is not authenticated returns a 403 response. On successful seeding returns a JSON response with `{ success: true }`. If an internal error occurs during seeding logs the error and returns a 500 response.
+ *
+ * @returns A Response with `{ success: true }` on success, a 403 response when authentication fails, or a 500 response when seeding errors occur.
+ */
 export async function POST(): Promise<Response> {
   const payload = await getPayload({ config })
   const requestHeaders = await headers()

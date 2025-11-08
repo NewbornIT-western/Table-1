@@ -10,6 +10,13 @@ import {
 import CallAPI from "./CallAPI";
 import CallAPIbyTQ from "./CallAPIbyTQ";
 
+/**
+ * Render a paginated, sortable table of Tech Goods data with loading, error, and refetch controls.
+ *
+ * Shows a loading view while data is pending and an error view when fetching fails. Provides clickable headers for sorting the "id" and "name" columns, displays object entries for the "data" column, and exposes pagination controls with previous/next navigation and a refetch button.
+ *
+ * @returns {JSX.Element} The rendered Table component.
+ */
 function Table() {
   const { data, isPending, isError, error, refetch } = CallAPIbyTQ();
 
