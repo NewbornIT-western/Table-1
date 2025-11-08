@@ -8,6 +8,11 @@ import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 
+/**
+ * Render the site's footer containing branding, a theme selector, and navigation links sourced from the footer global.
+ *
+ * @returns The footer JSX element with the Logo, ThemeSelector, and CMS-driven navigation links.
+ */
 export async function Footer() {
   const footerData: Footer = await getCachedGlobal('footer', 1)()
 

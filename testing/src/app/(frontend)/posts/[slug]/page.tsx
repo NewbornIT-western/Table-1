@@ -15,6 +15,11 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+/**
+ * Produce route parameters for static generation from existing post slugs.
+ *
+ * @returns An array of objects each containing a `slug` property to be used as static route parameters
+ */
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
@@ -41,6 +46,12 @@ type Args = {
   }>
 }
 
+/**
+ * Renders a post page for the provided slug, fetching the post and displaying hero, content, related posts, and a live preview when draft mode is enabled.
+ *
+ * @param paramsPromise - A promise resolving to route params; expects an optional `slug` that will be decoded and used to look up the post.
+ * @returns The page's React element. If no post matches the slug, renders a `PayloadRedirects` component pointing to the post URL.
+ */
 export default async function Post({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = '' } = await paramsPromise
@@ -77,6 +88,12 @@ export default async function Post({ params: paramsPromise }: Args) {
   )
 }
 
+/**
+ * Generate page metadata for the post identified by the route slug.
+ *
+ * @param paramsPromise - A promise that resolves to the route params object; may include an optional `slug`
+ * @returns Metadata derived from the post matching the decoded slug, or default metadata if no post is found
+ */
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = '' } = await paramsPromise
   // Decode to support slugs with special characters

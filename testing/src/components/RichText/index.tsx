@@ -61,6 +61,15 @@ type Props = {
   enableProse?: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
+/**
+ * Render rich text content with custom JSX converters and optional prose/gutter layout.
+ *
+ * @param props - Component props.
+ * @param props.data - The serialized editor state to render.
+ * @param props.enableGutter - If `true`, constrain content horizontally with the container gutter; if `false`, allow full width.
+ * @param props.enableProse - If `true`, apply typographic prose styles (`prose`, responsive sizes, and dark-mode inversion).
+ * @returns A React element that renders the provided rich text using the configured converters and styling.
+ */
 export default function RichText(props: Props) {
   const { className, enableProse = true, enableGutter = true, ...rest } = props
   return (

@@ -6,6 +6,14 @@ import { unstable_cache } from 'next/cache'
 
 type Collection = keyof Config['collections']
 
+/**
+ * Fetches the first document from the specified collection that matches the given slug.
+ *
+ * @param collection - The collection key (one of Config['collections']) to query.
+ * @param slug - The slug value to match against documents in the collection.
+ * @param depth - The relational depth to include in the query results (default 0).
+ * @returns The matched document if found, `undefined` otherwise.
+ */
 async function getDocument(collection: Collection, slug: string, depth = 0) {
   const payload = await getPayload({ config: configPromise })
 

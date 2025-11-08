@@ -7,6 +7,14 @@ import { NextRequest } from 'next/server'
 
 import configPromise from '@payload-config'
 
+/**
+ * Enables draft preview for a validated Payload user and redirects to the provided relative path.
+ *
+ * Validates the preview secret and required query parameters (`path`, `collection`, `slug`), ensures `path` is relative, authenticates the request with Payload, enables Next.js draft mode for authenticated users, and redirects to `path`. On validation or authentication failure, returns an appropriate HTTP error response.
+ *
+ * @param req - The incoming Next.js request containing URL and headers
+ * @returns A Response that redirects to the given `path` when preview is enabled; otherwise a Response with status 403, 404, or 500 and an explanatory message
+ */
 export async function GET(req: NextRequest): Promise<Response> {
   const payload = await getPayload({ config: configPromise })
 

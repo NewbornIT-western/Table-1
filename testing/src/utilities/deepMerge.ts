@@ -2,18 +2,23 @@
 // @ts-nocheck
 
 /**
- * Simple object check.
- * @param item
- * @returns {boolean}
+ * Determines whether a value is an object that is not an array.
+ *
+ * @param item - The value to test. Note: `null` has `typeof` `'object'` in JavaScript and will cause this function to return `true`.
+ * @returns `true` if `typeof item === 'object'` and `item` is not an array, `false` otherwise.
  */
 export function isObject(item: unknown): item is object {
   return typeof item === 'object' && !Array.isArray(item)
 }
 
 /**
- * Deep merge two objects.
- * @param target
- * @param ...sources
+ * Deeply merges properties from `source` into `target`.
+ *
+ * When both arguments are plain objects (i.e., typeof === "object" and not an array), object-valued properties are merged recursively; non-object values (including arrays) from `source` overwrite `target` properties. The function returns a shallow copy of `target` with merged values applied.
+ *
+ * @param target - The destination object whose shallow copy will be returned with merged values.
+ * @param source - The source object whose properties will be merged into `target`.
+ * @returns The merged object (typed as `T`).
  */
 export default function deepMerge<T, R>(target: T, source: R): T {
   const output = { ...target }

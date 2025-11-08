@@ -48,6 +48,11 @@ const getPostsSitemap = unstable_cache(
   },
 )
 
+/**
+ * Serves the posts sitemap XML response for the site.
+ *
+ * @returns A server-side sitemap HTTP response containing URL entries for published posts.
+ */
 export async function GET() {
   const sitemap = await getPostsSitemap()
 

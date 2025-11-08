@@ -11,6 +11,11 @@ import PageClient from './page.client'
 export const dynamic = 'force-static'
 export const revalidate = 600
 
+/**
+ * Renders the posts index page by fetching a paginated list of posts from Payload CMS and composing the posts list, page range, and pagination controls.
+ *
+ * @returns The React element tree for the posts index page.
+ */
 export default async function Page() {
   const payload = await getPayload({ config: configPromise })
 
@@ -56,6 +61,11 @@ export default async function Page() {
   )
 }
 
+/**
+ * Provide page metadata for the Posts index.
+ *
+ * @returns A `Metadata` object with the page title set to "Payload Website Template Posts".
+ */
 export function generateMetadata(): Metadata {
   return {
     title: `Payload Website Template Posts`,

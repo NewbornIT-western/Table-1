@@ -16,6 +16,12 @@ import { draftMode } from 'next/headers'
 import './globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 
+/**
+ * Defines the root HTML layout for the application, composing global providers and site chrome around page content.
+ *
+ * @param children - The page content to render inside the layout.
+ * @returns The top-level JSX element containing the `<html>` document with head (theme initialization and favicons) and body wrapped by providers, including the admin preview bar, header, children, and footer.
+ */
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
 

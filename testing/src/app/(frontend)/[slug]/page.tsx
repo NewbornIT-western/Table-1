@@ -13,6 +13,11 @@ import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 
+/**
+ * Produce static route parameters for all pages except the "home" page.
+ *
+ * @returns An array of objects each containing a `slug` property for a page (excluding `home`).
+ */
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const pages = await payload.find({
@@ -43,6 +48,16 @@ type Args = {
   }>
 }
 
+/**
+ * Render the page for the requested slug by resolving content from Payload and falling back to a seeded home page when necessary.
+ *
+ * Decodes the incoming slug, loads the matching page document (respecting draft mode), and either:
+ * - renders the page (including client bootstrap, optional live-preview listener in draft mode, hero and layout blocks), or
+ * - renders a redirect component when no matching page exists.
+ *
+ * @param paramsPromise - A promise that resolves to route parameters; `slug` may be omitted (defaults to `"home"`).
+ * @returns A React element representing the resolved page or a redirect component when the page was not found.
+ */
 export default async function Page({ params: paramsPromise }: Args) {
   const { isEnabled: draft } = await draftMode()
   const { slug = 'home' } = await paramsPromise
@@ -80,6 +95,12 @@ export default async function Page({ params: paramsPromise }: Args) {
   )
 }
 
+/**
+ * Produce Next.js metadata for the page identified by the route slug.
+ *
+ * @param paramsPromise - A promise resolving to the route params object; may contain an optional `slug` (defaults to `"home"`). The implementation accepts percent-encoded slugs.
+ * @returns The Metadata object for the page corresponding to the resolved slug
+ */
 export async function generateMetadata({ params: paramsPromise }: Args): Promise<Metadata> {
   const { slug = 'home' } = await paramsPromise
   // Decode to support slugs with special characters
