@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { CreateQueryOption } from "../queryoption/CreateQueryOption";
+import axios from "axios";
+import { CreateQueryOption } from "../queryoption/CreateQueryOption.jsx";
 
 const API_URL = "https://api.restful-api.dev/objects";
 
